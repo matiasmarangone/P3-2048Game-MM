@@ -1,4 +1,4 @@
-# P3-2048Game-MM
+# Programación 3- 2048 Game -Matias Marangone
 Entrega del trabajo práctico #1 de Programación 3, Comisión 1.
 
 ## Uso
