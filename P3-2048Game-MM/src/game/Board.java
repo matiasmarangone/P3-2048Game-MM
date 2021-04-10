@@ -229,9 +229,11 @@ public class Board {
         //after checking all the moves, if the counter is 16 means all nodes can't make a move
         if ( nodesWithoutMoves == 16 )
         {
-            return true;
+            return false;
+        }else {
+        	return true;
         }
-        return false;
+        
     }
 
     // When the user press the UP in the keyboard, we go through the array and for each node we execute the method vertical movement
@@ -258,11 +260,20 @@ public class Board {
     {
         for ( int i = 0; i < grid; i++ )
         {
+        	//in a 4x4 grid size this will always be 3, so we iterate from 3 to zero
         	boardLimit = ( grid - 1 );
+        	
             for ( int j = grid - 1; j >= 0; j-- )
             {
+            	
                 if ( board[j][i].getNodeValue() != 0 )
                 {
+                	//System.out.println("Valor de J : " + j );
+                	//System.out.println("Valor de I : " + i );
+                	//System.out.println("Valor del nodo: " + board[j][i].getNodeValue());
+                	//System.out.println("Valor de boardLimit: " + boardLimit);
+                	
+                	
                     if ( boardLimit >= j )
                     {
                         verticalMovement( j, i, "down" );
@@ -285,6 +296,7 @@ public class Board {
         //If both nodes value is equal that means they are eligible for adding
         if ( primary.getNodeValue() == 0 || primary.getNodeValue() == secondary.getNodeValue() )
         {
+        	//System.out.println("board limit: " + boardLimit + " primary node value: " + primary.getNodeValue() + " secondary node: " + secondary.getNodeValue() );
             if ( row > boardLimit || ( direction.equals( "down" ) && ( row < boardLimit ) ) )
             {
                 int sumOfNodesValue = primary.getNodeValue() + secondary.getNodeValue();
@@ -301,10 +313,12 @@ public class Board {
             if ( direction.equals( "down" ) )
             {
             	boardLimit--;
+            	//System.out.println(boardLimit + "boardlimit--");
             }
             else
             {
             	boardLimit++;
+            	//System.out.println(boardLimit + "boardlimit++");
             }
             verticalMovement( row, column, direction );
         }
